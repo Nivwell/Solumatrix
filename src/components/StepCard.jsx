@@ -1,4 +1,4 @@
-import '../styles/stepCard.css';
+import '../styles/StepCard.css';
 import { BlockMath, InlineMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 import { toFrac } from '../utils/formatFraction';
@@ -10,6 +10,14 @@ export default function StepCard({
   matrix, 
   operationType 
 }) {
+
+  console.log(`Rendering StepCard - Step ${stepNumber}:`, {
+    operationName,
+    operationDetail,
+    matrix,
+    operationType
+  });
+  
   const renderMatrixLatex = (matrix, opType) => {
     if (!matrix || matrix.length === 0) return <span>Matriz no disponible</span>;
     
@@ -51,7 +59,7 @@ export default function StepCard({
       
       {operationDetail && (
         <div className="operation-formula">
-          <BlockMath math={operationDetail} />
+          <InlineMath math={operationDetail} />
         </div>
       )}
       

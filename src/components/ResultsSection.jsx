@@ -16,6 +16,15 @@ export function ResultsSection({
     hasValidationError
 }) {
 
+    console.log("Rendering ResultsSection with:", {
+        result,
+        originalMatrix,
+        lastMatrix,
+        fullSteps,
+        operationType,
+        hasValidationError
+    });
+
     const [showSteps, setShowSteps] = useState(false);
     const [isEditingOriginal, setIsEditingOriginal] = useState(false);
     const [editedMatrix, setEditedMatrix] = useState(originalMatrix);
@@ -33,10 +42,17 @@ export function ResultsSection({
 
     const finalMatrixTitle = operationType === 'Determinante' ? 'Matriz Triangular' : 'Matriz Final';
     const showOriginal = originalMatrix != null;
+    
+    // Para determinante, solo mostrar lastMatrix si el determinante es 0
+    const shouldShowLastForDeterminant = 
+        operationType === 'Determinante' && 
+        lastMatrix != null && 
+        (result === 0 || result === '0' || (typeof result === 'string' && result.includes('determinante 0')));
+    
     const showLast =
         lastMatrix != null &&
-        operationType !== 'Determinante' &&
-        (operationType === 'SEL' || operationType === 'Inversa');
+        (shouldShowLastForDeterminant || 
+         (operationType !== 'Determinante' && (operationType === 'SEL' || operationType === 'Inversa')));
 
     const renderResult = (res) => {
         if (res === null || res === undefined) {
@@ -177,6 +193,7 @@ export function ResultsSection({
                                     key={index}
                                     stepNumber={index + 1}
                                     operationName={step.operationName}
+                                    operationDetail={step.operationDetail}
                                     matrix={step.matrix}
                                     operationType={operationType}
                                 />
