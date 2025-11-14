@@ -1,0 +1,470 @@
+:root {
+  /* --ipn-light-blue: #eef6ff;  */
+  --ipn-light-blue: #dce8f5; 
+  --white: #ffffff;
+}
+
+.home-root {
+  min-height: 100vh;
+  background-color: var(--ipn-light-blue);
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .home-root {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-root {
+
+    padding: 2rem;
+  }
+}
+
+/* * HOME CONTAINER
+ * Clases: max-w-7xl mx-auto
+ */
+.home-container {
+  max-width: 80rem;
+  /* max-w-7xl */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* * HOME CONTENT AREA
+ * Clases: space-y-4 md:space-y-6 lg:space-y-8
+ */
+.home-content-area {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  /* space-y-4 */
+}
+
+@media (min-width: 768px) {
+  .home-content-area {
+    gap: 1.5rem;
+    /* md:space-y-6 */
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-content-area {
+    gap: 2rem;
+    /* lg:space-y-8 */
+  }
+}
+
+/* * RESULTS ANIMATION WRAPPER
+ * Clases: animate-in fade-in slide-in-from-bottom-4 duration-500
+ */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-from-bottom {
+  from {
+    transform: translateY(1rem);
+  }
+
+  /* bottom-4 (16px) */
+  to {
+    transform: translateY(0);
+  }
+}
+
+.results-animation-wrapper {
+  animation: fade-in 500ms ease-out, slide-in-from-bottom 500ms ease-out;
+}
+
+.reset-button-wrapper {
+  text-align: center;
+  margin: 2rem;
+  margin-bottom: 3rem;
+}
+
+.reset-btn{
+  background-color: #2563eb; 
+  color: #ffffff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.flow-indicator-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  width: 100%;
+  padding: 0.6rem 0;
+}
+
+@media (min-width: 768px) {
+  .flow-indicator-wrapper {
+    flex-direction: row;
+    gap: 2rem;
+  }
+}
+
+.flow-step {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-align: center;
+  transition: 0.25s ease;
+}
+
+.flow-step-number-box {
+  position: relative;
+  z-index: 2;
+  width: 2.4rem;
+  height: 2.4rem;
+  background: #ffffff;
+  border-radius: 40%;
+  border: 2px solid #d0d0d0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.12);
+  flex-shrink: 0;
+  transition: 0.25s ease;
+}
+
+.flow-step-number {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #353535;
+}
+
+.flow-step-text {
+  font-size: 0.9rem;
+  font-weight: 450;
+  color: #2b2b2b;
+}
+
+.flow-separator {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .flow-separator {
+    display: inline-block;
+    vertical-align: middle;
+    width: 60px;
+    height: 3px;
+    background: black; 
+    border-radius: 3px;
+    opacity: 0.85;
+    transition: 0.25s ease;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .flow-step:not(:last-child) .flow-step-number-box::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 1.2rem;
+    background: black; 
+    z-index: 1;
+    transition: 0.25s ease;
+  }
+
+  .flow-step.highlighted .flow-step-number-box::after {
+    opacity: 1; 
+    background: linear-gradient(180deg, #4a4ff5 0%, #6a6aff 100%);
+  }
+}
+
+.flow-step.highlighted .flow-step-number-box {
+  background: linear-gradient(135deg, #6a6aff 0%, #4a4ff5 100%);
+  border-color: #4a4ff5;
+  color: white;
+  box-shadow: 0px 0px 12px rgba(74, 79, 245, 0.55);
+  transform: scale(1.2);
+}
+
+.flow-step.highlighted .flow-step-text {
+  font-weight: 600;
+  color: #1b1b1b;
+}
+
+.flow-step.highlighted + .flow-separator {
+  background: linear-gradient(90deg, #4a4ff5 0%, #6a6aff 100%);
+  opacity: 1;
+  box-shadow: 0px 0px 8px rgba(74, 79, 245, 0.4);
+}
+
+.flow-indicator-wrapper.instructions-button {
+  cursor: pointer;
+  opacity: 0.9;
+  transition: 0.25s;
+}
+
+.flow-indicator-wrapper.instructions-button:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+
+
+
+/* * Resultado */
+.resultado-final {
+  background-color: #e6f7ff;
+  border: 1px solid #91d5ff;
+  color: #004a75;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 20px auto;
+  box-shadow: 0 2px 5px rgba(0, 90, 150, 0.15);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.resultado-final:hover {
+  background-color: #d6efff;
+  box-shadow: 0 4px 8px rgba(0, 90, 150, 0.25);
+}
+
+.resultado-titulo {
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-right: 6px;
+}
+
+.resultado-texto {
+  display: inline;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+
+
+.ver-pasos-btn {
+  display: block;
+  width: 60%;
+  max-width: 200px;
+  padding: 0.6rem 1rem;
+  margin: 3rem auto 1.5rem auto;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.ver-pasos-btn:hover {
+  background-color: #0056b3;
+}
+
+.ver-pasos-btn:active {
+  transform: translateY(1px);
+}
+
+@media (min-width: 768px) {
+  .ver-pasos-btn {
+    width: 30%;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    margin-top: 4rem;
+  }
+}
+
+
+
+.resultado-titulo {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #444;
+  display: block;
+  margin-bottom: 10px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@media (min-width: 768px) {
+  .flow-separator {
+    width: 2rem;
+    /* md:w-8 */
+    height: 0.125rem;
+    /* md:h-0.5 */
+  }
+}
+
+
+
+.matrix-display-latex {
+  width: 100%;
+  overflow-x: auto;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.matrix-display-latex .katex {
+  display: inline-block;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .matrix-display-latex {
+    padding: 1.5rem;
+    font-size: 1.1rem;
+  }
+
+  .matrix-display-latex .katex {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .matrix-display-latex {
+    padding: 2rem;
+    font-size: 1.2rem;
+  }
+
+  .matrix-display-latex .katex {
+    font-size: 1.6rem;
+  }
+}
+
+.matrix-display-latex .katex .mtr {
+  margin-bottom: 0.5rem;
+}
+
+.matrix-display-latex .katex .mtd {
+  padding: 0.3rem 0.6rem;
+}
+
+.matrix-display-latex .katex .base {
+  display: inline-block;
+}
+
+
+.results-section-matrices-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .results-section-matrices-container {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 3rem;
+  }
+}
+
+.results-section-matrix-box {
+  flex: 1;
+  min-width: 200px;
+  max-width: 400px;
+}
+
+.results-section-result-wrapper {
+  text-align: center;
+}
+
+.results-section-result-box {
+  padding: 0.8rem 1rem;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.matrix-container .katex {
+  display: inline-block;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.matrix-container .katex .mtr {
+  margin-bottom: 0.5rem;
+}
+
+.matrix-container .katex .mtd {
+  padding: 0.3rem 0.6rem;
+}
+
+.matrix-container .katex .base {
+  display: inline-block;
+}
+
+@media (min-width: 768px) {
+  .matrix-container .katex {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .matrix-container .katex {
+    font-size: 1.6rem;
+  }
+}
+.error-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(90deg, #ffe5e5, #ffd6d6);
+  border-left: 5px solid #ff4c4c;
+  color: #b00000;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  text-align: center;
+  animation: fadeSlideIn 0.4s ease forwards;
+}
+
+.error-banner svg {
+  width: 20px;
+  height: 20px;
+  fill: #b00000;
+  flex-shrink: 0;
+}
+
+@keyframes fadeSlideIn {
+  0% { opacity: 0; transform: translateY(-10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}

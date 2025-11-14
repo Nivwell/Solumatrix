@@ -1,0 +1,104 @@
+.header-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.header-top-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 1vw, 20px); 
+  padding: 0 10px;
+}
+
+.logo-box {
+  width: clamp(55px, 7vw, 85px);
+  height: clamp(55px, 7vw, 85px);
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0px 0px 8px rgba(0,0,0,0.18);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: 0.25s ease;
+  border: 2px solid transparent; /* para efecto hover después */
+}
+
+.logo-box img {
+  width: 85%;
+  height: 85%;
+  object-fit: contain;
+  filter: brightness(0.95) contrast(1.1); 
+  transition: 0.25s ease;
+}
+
+.logo-box:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0px 6px 14px rgba(0,0,0,0.25);
+  border-color: #4a4ff5; 
+}
+
+.logo-box:active {
+  transform: scale(0.97);
+}
+
+
+.header-title {
+  flex: 1; 
+  background: white;
+  padding: clamp(12px, 1.3vw, 28px) clamp(18px, 3vw, 40px);
+  border-radius: 14px;
+  box-shadow: 0px 0px 6px rgba(0,0,0,0.15);
+  display: flex;
+  justify-content: center;
+  min-width: 300px;
+}
+
+.header-title h1 {
+  margin: 0;
+  color: #333;
+  font-size: clamp(18px, 2vw, 28px);
+  font-weight: 600;
+}
+
+/* BOTONES */
+.operation-buttons {
+  display: flex;
+  gap: clamp(10px, 1.5vw, 20px);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.operation-btn {
+  padding: clamp(8px, 1vw, 12px) clamp(18px, 1.8vw, 28px);
+  border-radius: 10px;
+  border: 2px solid #b8b8b8;
+  background: #ffffff;
+  color: #333;
+  cursor: pointer;
+  font-size: clamp(12px, 1.5vw, 16px);
+  font-weight: 500;
+  transition: 0.25s ease;
+  box-shadow: 0px 0px 6px rgba(0,0,0,0.12);
+}
+
+.operation-btn:hover {
+  background: #f2f2f2;
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.20);
+}
+
+.operation-btn.active {
+  background: #4a4ff5;
+  color: white;
+  border-color: #4a4ff5;
+  box-shadow: 0 4px 12px rgba(74,79,245,0.45);
+  transform: translateY(-2px);
+}
