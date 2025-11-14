@@ -1,4 +1,4 @@
-import '../styles/StepCard.css';
+import '../styles/stepCard.css';
 import { BlockMath, InlineMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 import { toFrac } from '../utils/formatFraction';
